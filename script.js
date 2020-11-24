@@ -1,4 +1,5 @@
 let navbar = document.querySelector('.menu')
+let mobileHam = document.querySelector('.menu__mobile-button')
 
 window.addEventListener('scroll', function(e){
     if(window.scrollY > 0){
@@ -8,7 +9,6 @@ window.addEventListener('scroll', function(e){
     }
 })
 
-let mobileHam = document.querySelector('.menu__mobile-button')
 let mobileMenu = document.querySelector('.mobile-menu')
 
 mobileHam.addEventListener('click', function(e){
@@ -19,4 +19,12 @@ let mobileMenuClose = document.querySelector('.mobile-menu__close')
 
 mobileMenuClose.addEventListener('click', function(e){
     mobileMenu.classList.remove('active')
+})
+
+let mobileLink = document.querySelectorAll('.mobileLink')
+
+mobileLink.forEach(function(ele) {
+    ele.addEventListener('click', function(e){
+        mobileMenu.classList.remove('active')
+    })
 })
