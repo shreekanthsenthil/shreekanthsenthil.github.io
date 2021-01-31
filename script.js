@@ -28,3 +28,28 @@ mobileLink.forEach(function(ele) {
         mobileMenu.classList.remove('active')
     })
 })
+
+function submitForm(){
+    let body = "Name: " + document.querySelector(".js-field-name").value + "\n" + "Email: " + document.querySelector(".js-field-email").value + "\n" + document.querySelector(".js-field-message").value
+    let data = {
+        subject: "Mail from Portfolio",
+        body: body
+    }
+    fetch("https://mail-shreekanth.herokuapp.com/", {
+        method: "POST",
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    }).then(res => submitCompleted())
+}
+
+function submitCompleted(){
+    document.querySelector(".js-field-name").value = ""
+    document.querySelector(".js-field-email").value = ""
+    document.querySelector(".js-field-message").value = ""
+}
+
+let submitBtn = document.getElementById('submit')
+submitBtn.addEventListener('click', submitForm)
